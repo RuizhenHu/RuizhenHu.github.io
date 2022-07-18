@@ -17,7 +17,7 @@
     <link rel="icon" href="/favicon.ico" >
     
     
-<link rel="stylesheet" href="/css/style.css?v=1658107875771.css">
+<link rel="stylesheet" href="/css/style.css?v=1658109842092.css">
 
     <!--[if lt IE 9]>
     
@@ -95,6 +95,18 @@
     </p>
     <div id="JELON__articlePostContent" class="post-content">
         <h2 id="贝叶斯分类器"><a href="#贝叶斯分类器" class="headerlink" title="贝叶斯分类器"></a>贝叶斯分类器</h2><h3 id="半朴素贝叶斯分类器"><a href="#半朴素贝叶斯分类器" class="headerlink" title="半朴素贝叶斯分类器"></a>半朴素贝叶斯分类器</h3><p><img src="/images/semi_naive_bayes.jpg" alt="半朴素贝叶斯分类器基础假设"></p>
+<p>那么如何确定其父属性就是最为重要的一点了，下面举一些父属性的选择模型</p>
+<p><strong>1. SPODE (Super-Parent ODE) 方法</strong></p>
+<p>假设所有属性都依赖与同一个属性，并称这个属性为”超父”（super parent）。随后通过交叉验证等模型选择方法来确定超父属性的归属（检测那个属性作为超父属性的时候模型拥有最好的表现）。</p>
+<p><strong>2. TAN (Tree Augmented naive Bayes) 方法</strong></p>
+<p>方法在<a target="_blank" rel="noopener" href="https://mathworld.wolfram.com/MaximumSpanningTree.html">最大权重生成树（maximum weighted spanning tree）算法</a>的基础上利用以下步骤将属性间的依赖关系表现为树状结构。</p>
+<ol>
+<li>计算两个属性之间的<a target="_blank" rel="noopener" href="https://www.ece.tufts.edu/ee/194NIT/lect01.pdf">条件互信息（conditional mutual information）</a><br> $$I(x_i, y_i | y) &#x3D; \sum_{x_i, x_j; c \in y} P(x_i, x_j | c) \log \frac{P(x_i, x_j | c)}{P(x_i | c)P(x_j | c)}$$</li>
+<li>以属性为结点构建完全图，以$I(x_i, x_j | y)$ 为任意连点之间的权重（weight）</li>
+<li>根据此图计算最大权重生成树（maximum weighted spanning tree），挑选根变量，并将便设为有向</li>
+<li>加入类别$y$，增加从$y$到每个属性的有向边</li>
+</ol>
+<p>上述两种方法的示意图如下<br><img src="/images/ode.jpg" alt="ODE示意图"></p>
 
     </div>
     <p class="eof">-- EOF --</p>
@@ -190,22 +202,22 @@
 <ul class="widget-bd">
     
     <li>
-        <a href="/categories/AI/">AI</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
         <a href="/categories/HexoDocument/">HexoDocument</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/General/">General</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/AI/">AI</a>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
         <a href="/categories/Math/">Math</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/General/">General</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -223,17 +235,17 @@
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
-    <a class="tag-item" href="/tags/AI/" title="AI">AI (2)</a>
-  
     <a class="tag-item" href="/tags/Hexo%E6%96%87%E6%A1%A3/" title="Hexo文档">Hexo文档 (2)</a>
   
+    <a class="tag-item" href="/tags/AI/" title="AI">AI (2)</a>
+  
     <a class="tag-item" href="/tags/Windows/" title="Windows">Windows (2)</a>
+  
+    <a class="tag-item" href="/tags/Math/" title="Math">Math (1)</a>
   
     <a class="tag-item" href="/tags/ML/" title="ML">ML (1)</a>
   
     <a class="tag-item" href="/tags/%E9%80%9A%E7%94%A8/" title="通用">通用 (1)</a>
-  
-    <a class="tag-item" href="/tags/Math/" title="Math">Math (1)</a>
   
 </div>
     </section>
@@ -260,7 +272,7 @@
     <!--博客js脚本 -->
     <!-- 这里放网站js脚本 -->
 
-<script src="/js/main.js?v=1658107875772.js"></script>
+<script src="/js/main.js?v=1658109842095.js"></script>
 
 
 </body>
